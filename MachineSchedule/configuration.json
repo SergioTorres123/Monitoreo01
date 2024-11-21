@@ -1,0 +1,29 @@
+{
+  "PARAMETERS": {
+    "GENERAL": {
+      "FILEPATH_SCHEDULE_UIPATH":"process_data\\schedule_machines_uipath.xlsx",
+      "FILEPATH_DDBB_UIPATH":"process_data\\ddbb_graphs_uipath.xlsx",
+      "TENANT_PRODUCCION": "Produccion",
+      "TENANT_MARCHA_BLANCA": "MarchaBlanca"
+    },
+    "API_UIPATH":{
+      "CLIENT_ID_2": "815b5b64-6845-4b9d-a7a8-0660e43c0d76",
+      "CLIENT_SECRET_2": "O*xen!?k9ag1Z8ng",
+      "CLIENT_ID": "c1590277-7f77-4043-ac48-d332a9b67da5",
+      "CLIENT_SECRET": "kA@_RyNJJ5~huIK^",
+      "FILEPATH_TOKEN": "process_data\\token_uipath.txt"
+    },
+    "API_PAD":{
+      "CLIENT_ID": "eadeb856-64e1-43ec-9ca0-e5ed9b601dad",
+      "CLIENT_SECRET": "Jeo8Q~ip6Ya7qbItIZd65mCVJOmLQdg6u6PrzbgZ",
+      "FILEPATH_TOKEN": "process_data\\token_pad.txt",
+      "TENANT_ID": "a5603b60-3a2f-4d5d-9f2d-1ec213aa643e"
+      },
+    "API_KEYVAULT":{
+      "CLIENT_ID": "eadeb856-64e1-43ec-9ca0-e5ed9b601dad",
+      "CLIENT_SECRET": "Jeo8Q~ip6Ya7qbItIZd65mCVJOmLQdg6u6PrzbgZ",
+      "FILEPATH_TOKEN": "process_data\\token_keyvault.txt",
+      "TENANT_ID": "a5603b60-3a2f-4d5d-9f2d-1ec213aa643e"
+      }
+  }
+}
