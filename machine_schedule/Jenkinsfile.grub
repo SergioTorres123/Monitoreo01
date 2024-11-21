@@ -1,0 +1,49 @@
+pipeline {
+    agent { label 'MV01' } // Usar el nodo configurado como MV01
+    environment {
+        PYTHON_PATH = 'C:\\Users\\rpa.agent.prod.001\\AppData\\Local\\Programs\\Python\\Python312' // Ruta específica de Python
+    }
+    stages {
+        stage('Preparar Entorno') {
+            steps {
+                echo 'Clonando el repositorio y configurando el entorno...'
+                // Clonar el repositorio
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/SergioTorres123/Monitoreo01.git',
+                        credentialsId: '3d312f91-b549-4297-98c9-f44cc83fa397'
+                    ]]
+                ])
+                // Crear y activar el entorno virtual
+                bat """
+                ${PYTHON_PATH}\\python.exe -m venv venv
+                .\\venv\\Scripts\\activate
+                pip install --upgrade pip
+                pip install -r machine_schedule\\requirements.txt || echo 'No se encontró requirements.txt'
+                """
+            }
+        }
+        stage('Ejecutar Proyecto') {
+            steps {
+                echo 'Ejecutando el script principal...'
+                bat """
+                .\\venv\\Scripts\\activate
+                ${PYTHON_PATH}\\python.exe machine_schedule\\main.py
+                """
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completado.'
+        }
+        success {
+            echo 'Pipeline ejecutado con éxito.'
+        }
+        failure {
+            echo 'El pipeline falló. Revisa los logs.'
+        }
+    }
+}
